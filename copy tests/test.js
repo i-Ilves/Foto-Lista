@@ -13,24 +13,14 @@ async function getPhotos(albumID){
   return response
 }
 
- async function renderPhotos(event){
-/*     let element = event.target
-    element.value
-    $(this) === $(event.target) */
+ async function renderPhotos(){
 
   let albumID = $(this).val() 
 
   let photos = await getPhotos(albumID)
   $('main').html('')
   photos.forEach(photo => {
-    let html =`
-    <article>
-      <h2>${photo.title}</h2>
-      <img src="${photo.thumbnailUrl}">
-    </article>
-    `
-
-    $('main').append(html)
+      new Photo(photo)
   })
 
 } 
